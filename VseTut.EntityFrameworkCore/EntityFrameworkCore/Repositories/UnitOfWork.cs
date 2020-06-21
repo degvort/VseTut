@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using VseTut.Core.Categories;
+using VseTut.Core.SubCategories;
 using VseTut.Core.Users;
 using VseTut.Core.Users.Model;
+using VseTut.EntityFrameworkCore.EntityFrameworkCore.Repositories.SubCategories;
 using VseTut.EntityFrameworkCore.EntityFrameworkCore.Repositories.Users;
 
 namespace VseTut.EntityFrameworkCore.EntityFrameworkCore.Repositories
@@ -13,6 +15,7 @@ namespace VseTut.EntityFrameworkCore.EntityFrameworkCore.Repositories
         private readonly VseTutDbContext _context;
         private UserRepository userRepository;
         private CategoryRepository categoryRespository;
+        private SubCategoriesRepository subCategoriesRepository;
 
         public UnitOfWork(VseTutDbContext context)
         {
@@ -36,6 +39,16 @@ namespace VseTut.EntityFrameworkCore.EntityFrameworkCore.Repositories
                 if (categoryRespository == null)
                     categoryRespository = new CategoryRepository(_context);
                 return categoryRespository;
+            }
+        }
+
+        public ISubCategoryRepository SubCategories
+        {
+            get
+            {
+                if (subCategoriesRepository == null)
+                    subCategoriesRepository = new SubCategoriesRepository(_context);
+                return subCategoriesRepository;
             }
         }
 

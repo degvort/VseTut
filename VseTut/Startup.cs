@@ -22,6 +22,8 @@ using VseTut.Core.Auth;
 using VseTut.Web.Core.Managers.Auth;
 using VseTut.Core.Categories;
 using VseTut.Web.Core.Managers.Categories;
+using VseTut.Core.SubCategories;
+using VseTut.Web.Core.Managers.SubCategories;
 
 namespace VseTut
 {
@@ -49,6 +51,7 @@ namespace VseTut
             services.AddScoped<IJwtManager, JwtManager>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
             services.AddScoped<ICategoryManager, CategoryManager>();
+            services.AddScoped<ISubCategoryManager, SubCategoriesManager>();
 
             services.AddScoped<ClaimsIdentityFactory>();
             services.AddScoped<VseTutDbContext>();

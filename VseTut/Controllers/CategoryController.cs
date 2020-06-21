@@ -14,14 +14,11 @@ namespace VseTut.Web.Host.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryManager _categoryManager;
-        private readonly UserManager<User> _userManager;
 
         public CategoryController(
-            ICategoryManager categoryManager,
-            UserManager<User> userManager)
+            ICategoryManager categoryManager)
         {
             _categoryManager = categoryManager;
-            _userManager = userManager;
         }
 
         [Authorize]
@@ -41,7 +38,7 @@ namespace VseTut.Web.Host.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> Categories(long? id)
+        public async Task<IActionResult> CategoriesAsync(long? id)
         {
             var result = new List<CategoryDto>();
             try
@@ -65,11 +62,11 @@ namespace VseTut.Web.Host.Controllers
 
         [Authorize]
         [HttpPut]
-        public IActionResult EditCategory([FromBody] CategoryDto input)
+        public async Task<IActionResult> EditCategoryAsync([FromBody] CategoryDto input)
         {
             try
             {
-                _categoryManager.EditCategory(input);
+                await _categoryManager.EditCategory(input);
                 return Ok();
             }
             catch (Exception ex)
@@ -80,7 +77,7 @@ namespace VseTut.Web.Host.Controllers
 
         [Authorize]
         [HttpDelete]
-        public async Task<IActionResult> DeleteCategory(long id)
+        public async Task<IActionResult> DeleteCategoryAsync(long id)
         {
             try
             {

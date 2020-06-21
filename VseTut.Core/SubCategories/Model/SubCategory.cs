@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using VseTut.Core.SubCategories.Model;
+using VseTut.Core.Categories.Model;
 
-namespace VseTut.Core.Categories.Model
+namespace VseTut.Core.SubCategories.Model
 {
-    public class Category
+    public class SubCategory
     {
-        public Category()
-        {
-            SubCategories = new List<SubCategory>();
-        }
-
         public long Id { get; set; }
 
         public string Title { get; set; }
@@ -22,6 +17,8 @@ namespace VseTut.Core.Categories.Model
 
         public string Route { get; set; }
 
-        public virtual ICollection<SubCategory> SubCategories { get; set; }
+        public long? CategoryId { get; set; }
+
+        public virtual Category Category { get; set; }
     }
 }
