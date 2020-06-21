@@ -21,7 +21,7 @@ namespace VseTut.Web.Core.Managers.Categories
             _uow = uow;
             _mapper = mapper;
         }
-
+        
         public async Task CreateCategoryAsync(CategoryDto input)
         {
             var category = _mapper.Map<Category>(input);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VseTut.Core.SubCategories.Dto;
 
 namespace VseTut.Core.Categories
 {
@@ -15,5 +16,7 @@ namespace VseTut.Core.Categories
         public string Image { get; set; } = null;
 
         public string Route { get; set; } = null;
+
+        public List<SubCategoryDto> SubCategories { get; set; }
     }
 }
